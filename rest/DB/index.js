@@ -1,6 +1,6 @@
 'use strict';
 
-const User = require('./UserDB/user');
+const User = require('./userDB/userDB');
 
 module.exports = {
     User
