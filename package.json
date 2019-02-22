@@ -28,7 +28,9 @@
     "mocha": "^5.2.0",
     "supertest": "^3.3.0"
   },
-  "ghooks": {
-    "pre-commit": "npm run lint"
+  "config": {
+    "ghooks": {
+      "pre-commit": "npm run lint"
+    }
   }
 }
