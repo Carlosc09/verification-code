@@ -2,9 +2,9 @@
 
 const express = require('express');
 const router = express.Router();
-const user = require('../Controller/user/userController');
+const user = require('../Controller/userController');
 
-router.post('/user/authenticate', (req, res) => {
+router.post('/user/sigin', (req, res) => {
     user.authenticate(req, res);
 });
 
