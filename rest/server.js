@@ -4,7 +4,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express(); // Please do not remove this line, since CLI uses this line as guidance to import new controllers
 const userRoutes = require('./Routes/userRoutes');
-const authToken = require('./common/auth/validateToken');
+// const authToken = require('./common/auth/validateToken');
 require('dotenv').config();
 
 app.use(bodyParser.urlencoded({ extended: false }));

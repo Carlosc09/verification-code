@@ -5,28 +5,30 @@ const _ = require('lodash');
 
 const userSchema = {
     userName: {
-      required: true,
-      isEmail: true
+        required: true,
+        isEmail: true
     },
     cellPhone: {
         required: true,
-        validate: (value, path) => {
-            var phoneValid = /^\+?([0-9]{2})?[- ]?([0-9]{2})?[- ]?([0-9]{4})[- ]?([0-9]{4})$/;
+        validate: value => {
+            const phoneValid = /^\+?([0-9]{2})?[- ]?([0-9]{2})?[- ]?([0-9]{4})[- ]?([0-9]{4})$/;
+            let validate;
 
             if(value.match(phoneValid)) {
-                return {
+                validate = {
                     isValid: true,
                     message: 'Invalid cellPhone'
                 };
             } else {
-                return {
+                validate = {
                     isValid: false,
                     message: 'Invalid cellPhone'
                 };
             }
+            return validate;
         }
     }
-}
+};
 
 module.exports = {
     authenticate(_user) {
@@ -50,11 +52,11 @@ module.exports = {
                 if(err) {
                     reject(err);
                 }
-                if(! _.isEmpty(result)) {
+                if(!_.isEmpty(result)) {
                     reject(result);
                 }
                 resolve(true);
             });
         });
     }
-}
+};
