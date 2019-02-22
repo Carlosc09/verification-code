@@ -5,7 +5,6 @@ const router = express.Router();
 const user = require('../Controller/userController');
 
 router.post('/user/sigin', (req, res) => {
-    console.log(' - - - - ', req.body);
     user.authenticate(req, res);
 });
 
