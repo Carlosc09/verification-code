@@ -1,17 +1,29 @@
 'use strict';
 
 const randomize = require('randomatic');
+const SMSService = require('../../smsService/smsService');
 const token = randomize('0000');
 
 module.exports = {
-    authenticate(req) {
+    signin(req) {
         return new Promise((resolve, reject) => {
-            console.log(req.session.userToken);
+            let msg = `Hi ${req.body.userName}! Your verification code for Rever is ${token}`;
+            let number;
+            let phone = req.body.cellPhone;
+
             req.session.userToken = {
                 userName: req.body.userName,
                 token: token
             };
-            resolve('Hi ' + req.body.userName + '! Your verification code for Rever is ' + token);
+
+            number = phone.replace(/\D/g, '');
+
+            SMSService.sendSMS(number, msg).then(() => {
+                resolve(msg);
+            }).catch(err => {
+                console.log(msg);
+                reject(err);
+            });
         });
     }
 };
