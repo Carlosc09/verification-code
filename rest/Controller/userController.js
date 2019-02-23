@@ -13,7 +13,7 @@ module.exports = {
     },
 
     authenticate(req, res) {
-        DB.User.authenticate(req.body).then(_res => {
+        DB.User.authenticate(req).then(_res => {
             res.send(_res);
         }).catch(_err => {
             if(_err.status) {
