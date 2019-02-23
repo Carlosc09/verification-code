@@ -8,7 +8,6 @@ module.exports = {
         DB.Idea.getIdias(req).then(_res => {
             res.send(_res);
         }).catch(_err => {
-            console.log(_err);
             if(_err.status) {
                 res.status(_err.status).send(_err.message);
             } else {
