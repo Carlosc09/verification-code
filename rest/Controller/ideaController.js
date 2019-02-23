@@ -4,10 +4,11 @@ const DB = require('../DB');
 
 module.exports = {
 
-    signin(req, res) {
-        DB.User.signin(req).then(_res => {
+    get(req, res) {
+        DB.Idea.getIdias(req).then(_res => {
             res.send(_res);
         }).catch(_err => {
+            console.log(_err);
             if(_err.status) {
                 res.status(_err.status).send(_err.message);
             } else {
