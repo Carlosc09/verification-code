@@ -7,7 +7,7 @@ const token = randomize('0000');
 module.exports = {
     signin(req) {
         return new Promise((resolve, reject) => {
-            let msg = `Hi ${req.body.userName}! Your verification code for ${process.env.company} is ${token}`;
+            let msg = `Hi ${req.body.userName}! Your verification code for ${process.env.company} is ${token} `;
             let number;
             let phone = req.body.cellPhone;
 
@@ -21,7 +21,7 @@ module.exports = {
             SMSService.sendSMS(number, msg).then(() => {
                 // eslint-disable-next-line no-console
                 console.log(msg);
-                resolve(`Hi ${req.body.userName}, you have been verified!`);
+                resolve(msg);
             }).catch(err => {
                 // eslint-disable-next-line no-console
                 console.log(msg);
