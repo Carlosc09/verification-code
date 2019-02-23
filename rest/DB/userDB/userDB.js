@@ -7,7 +7,7 @@ const token = randomize('0000');
 module.exports = {
     signin(req) {
         return new Promise((resolve, reject) => {
-            let msg = `Hi ${req.body.userName}! Your verification code for Rever is ${token}`;
+            let msg = `Hi ${req.body.userName}! Your verification code for ${process.env.company} is ${token}`;
             let number;
             let phone = req.body.cellPhone;
 
@@ -19,8 +19,11 @@ module.exports = {
             number = phone.replace(/\D/g, '');
 
             SMSService.sendSMS(number, msg).then(() => {
-                resolve(msg);
+                // eslint-disable-next-line no-console
+                console.log(msg);
+                resolve(`Hi ${req.body.userName}, you have been verified!`);
             }).catch(err => {
+                // eslint-disable-next-line no-console
                 console.log(msg);
                 reject(err);
             });

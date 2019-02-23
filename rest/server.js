@@ -29,7 +29,7 @@ app.use('/api', userRoutes);
 app.use('/api', ideaRoutes);
 
 /** start server. */
-const server = app.listen(process.env.PORT, () => {
+const server = app.listen(process.env.PORT || 3000, () => {
     // eslint-disable-next-line no-console
     console.log('Server is running', process.env.PORT);
 });
