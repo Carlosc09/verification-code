@@ -15,11 +15,7 @@ module.exports.sendSMS = (to, message) => {
             debug: false
         });
 
-        if(to.length === 10) {
-            phone = `52${to}`;
-        } else {
-            phone = to;
-        }
+        phone = (to.length === 10)? `52${to}` : to;
 
         const options = {
             from,
